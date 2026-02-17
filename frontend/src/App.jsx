@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
 import Dashboard from "./components/Dashboard"
 import ReferralForm from "./components/ReferralForm"
-import { getAllCandidates } from "./api"
+import { getAllCandidates, getMetrics } from "./api"
 
 function App() {
   const [candidates, setCandidates] = useState([])
+  const [metrics, setMetrics] = useState(null)
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState("dashboard")
 
@@ -13,6 +14,9 @@ function App() {
     try {
       const result = await getAllCandidates()
       setCandidates(result.data)
+
+      const metricsData = await getMetrics()
+      setMetrics(metricsData)
     } catch (error) {
       console.log(error)
     }
@@ -35,6 +39,7 @@ function App() {
       {activeTab === "dashboard" && (
         <Dashboard
           candidates={candidates}
+          metrics={metrics}
           loading={loading}
           onStatusUpdate={fetchCandidates}
           onDelete={fetchCandidates}

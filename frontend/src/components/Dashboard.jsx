@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import CandidateCard from "./CandidateCard"
 
-function Dashboard({ candidates, loading, onStatusUpdate, onDelete }) {
+function Dashboard({ candidates, metrics, loading, onStatusUpdate, onDelete }) {
   const [searchTitle, setSearchTitle] = useState("")
   const [filterStatus, setFilterStatus] = useState("")
 
@@ -10,13 +10,38 @@ function Dashboard({ candidates, loading, onStatusUpdate, onDelete }) {
       .toLowerCase()
       .includes(searchTitle.toLowerCase())
 
-    const statusMatch = filterStatus === "" || candidate.status === filterStatus
+    const statusMatch =
+      filterStatus === "" || candidate.status === filterStatus
 
     return titleMatch && statusMatch
   })
 
   return (
     <div>
+
+      {/* Metrics Section */}
+      {metrics && (
+        <div className="metrics">
+          <div className="metric-box">
+            <h3>{metrics.total}</h3>
+            <p>Total</p>
+          </div>
+          <div className="metric-box">
+            <h3>{metrics.pending}</h3>
+            <p>Pending</p>
+          </div>
+          <div className="metric-box">
+            <h3>{metrics.reviewed}</h3>
+            <p>Reviewed</p>
+          </div>
+          <div className="metric-box">
+            <h3>{metrics.hired}</h3>
+            <p>Hired</p>
+          </div>
+        </div>
+      )}
+
+      {/* Filters */}
       <div className="filters">
         <input
           type="text"

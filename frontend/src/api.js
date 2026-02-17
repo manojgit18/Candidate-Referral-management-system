@@ -23,3 +23,8 @@ export const deleteCandidate = async (id) => {
   const response = await axios.delete(`${BASE_URL}/candidates/${id}`)
   return response.data
 }
+
+export const getMetrics = async () => {
+  const response = await axios.get(`${BASE_URL}/candidates/metrics`)
+  return response.data
+}
