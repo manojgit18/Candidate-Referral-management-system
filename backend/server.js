@@ -20,6 +20,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Worko Referral API is running!" })
 })
 
+const PORT = process.env.PORT || 5000
+app.listen(PORT)
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
@@ -28,4 +31,4 @@ mongoose
   })
   .catch(() => {
     process.exit(1)
-  })
+  });
