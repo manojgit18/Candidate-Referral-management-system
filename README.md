@@ -1,5 +1,17 @@
 # Candidate-Referral-management-system
 
+Live Links:
+
+Frontend (Live App):
+https://candidate-referral-management-syste-nine.vercel.app/
+
+Backend API:
+https://candidate-referral-management-system-48zx.onrender.com
+
+Source Code (GitHub):
+https://github.com/manojgit18/Candidate-Referral-management-system
+
+
 The application allows users to refer candidates, manage their status, and view all referrals through a simple dashboard.
 
 The project is built using the MERN stack:
